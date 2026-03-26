@@ -48,9 +48,30 @@ pub fn input_operator() -> char {
         let operator = operator.trim().chars().next();
 
         match operator {
-            Some('+') | Some('-') | Some('*') | Some('/') => return operator.unwrap(),
+            Some(op @ ('+' | '-' | '*' | '/')) => return op,
             _ => {
                 println!("\nHanya bisa memasukan 4 operator!");
+                continue;
+            }
+        }
+    }
+}
+
+pub fn cek_lanjut() -> bool {
+    loop {
+        println!("\nLanjutkan lagi? (y/n)");
+
+        let mut lanjut = String::new();
+        io::stdin().read_line(&mut lanjut).expect("Gagal membaca input!");
+
+        match lanjut.trim() {
+            "y" | "Y" => return true,
+            "n" | "N" => {
+                println!("\nKeluar dari program...");
+                return false;
+            }
+            _ => {
+                println!("\nHanya bisa memasukan 'y' atau 'n'!");
                 continue;
             }
         }
