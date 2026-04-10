@@ -1,4 +1,4 @@
-use std::io;
+use std::io::{self, Write};
 
 pub fn tambah(a: f64, b: f64) -> f64 {
     a + b
@@ -23,9 +23,10 @@ pub fn bagi(a: f64, mut b: f64) -> f64 {
 
 pub fn input_angka(prompt: &str) -> f64 {
     loop {
-        println!("{}", prompt);
+        print!("{}", prompt);
         
         let mut input = String::new();
+        io::stdout().flush().unwrap();
         io::stdin().read_line(&mut input).expect("Gagal membaca input!");
 
         match input.trim().parse() {
@@ -40,9 +41,10 @@ pub fn input_angka(prompt: &str) -> f64 {
 
 pub fn input_operator() -> char {
     loop {
-        println!("Masukan operator(+, -, *, /):");
+        print!("Masukan operator(+, -, *, /): ");
 
         let mut operator = String::new();
+        io::stdout().flush().unwrap();
         io::stdin().read_line(&mut operator).expect("Gagal membaca input!");
 
         let operator = operator.trim().chars().next();

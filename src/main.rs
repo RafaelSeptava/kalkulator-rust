@@ -5,9 +5,9 @@ fn main() {
     println!("{:-^30}", "Kalkulator");
 
     loop {
-        let angka_pertama = input_angka("\nMasukan angka pertama:");
+        let angka_pertama = input_angka("\nMasukan angka pertama: ");
         let operator = input_operator();
-        let angka_kedua = input_angka("Masukan angka kedua:");
+        let angka_kedua = input_angka("Masukan angka kedua: ");
         
         let hasil: f64;
         
